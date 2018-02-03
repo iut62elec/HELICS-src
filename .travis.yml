@@ -39,7 +39,7 @@ _basic_env:
   if: branch IN (master, develop)
   os: osx
   compiler: clang
-        
+
 jobs:
   # On weekdays, the backlog for waiting OS X builds is huge
   fast_finish: true
@@ -132,6 +132,7 @@ script:
   # 6 = travis-tests
   # - ctest --verbose --timeout 120 -I 0,0,0,1
   - ctest --verbose --timeout 120 -I 0,0,0,6
+  - octave-cli --no-gui --eval ver
 
 notifications:
     email: false

@@ -29,7 +29,7 @@ if [[ $commit_msg == *'[update_cache]'* ]]; then
         rm -rf dependencies/zmq;
         individual="true"
     fi
-    
+
     # If no dependency named in commit message, update entire cache
     if [[ "$individual" != 'true' ]]; then
         rm -rf dependencies;
@@ -72,6 +72,14 @@ elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     export PATH="${PWD}/cmake-3.4.3-Darwin-x86_64/CMake.app/Contents/bin:${PATH}"
     echo "*** cmake installed ($PATH)"
 fi
+
+# MATLAB extension
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rm '/usr/local/include/c++'; fi
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update                ; fi
+if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install octave        ; fi
+if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-add-repository -y ppa:octave/stable; fi
+if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq                     ; fi
+if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -qq octave             ; fi
 
 if [[ ! -d "dependencies/zmq" ]]; then
     echo "*** build libzmq"
