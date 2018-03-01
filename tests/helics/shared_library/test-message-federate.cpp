@@ -163,7 +163,7 @@ BOOST_DATA_TEST_CASE (message_federate_send_receive_2fed, bdata::make (core_type
     BOOST_CHECK_EQUAL (gtime, 1.0);
     BOOST_CHECK_EQUAL (time, 1.0);
 
-    auto res = helicsFederateHasMessage (mFed1);;
+    auto res = helicsFederateHasMessage (mFed1);
     BOOST_CHECK (res);
     res = helicsEndpointHasMessage (epid);
     BOOST_CHECK (res);
@@ -191,162 +191,115 @@ BOOST_DATA_TEST_CASE (message_federate_send_receive_2fed, bdata::make (core_type
     CE(helicsFederateGetState(mFed2, &mFed2State));
 	BOOST_CHECK (mFed2State == federate_state::helics_finalize_state);
 }
-/*
-#if ENABLE_TEST_TIMEOUTS > 0
-BOOST_TEST_DECORATOR (*utf::timeout (5))
-#endif
-BOOST_DATA_TEST_CASE (message_federate_send_receive_2fed_obj, bdata::make (core_types), core_type)
-{
-    using namespace helics;
-    SetupTest<MessageFederate> (core_type, 2);
-    auto mFed1 = GetFederateAs<MessageFederate> (0);
-    auto mFed2 = GetFederateAs<MessageFederate> (1);
-
-    Endpoint epid (mFed1.get (), "ep1");
-
-    Endpoint epid2 (GLOBAL, mFed2.get (), "ep2", "random");
-
-    mFed1->setTimeDelta (1.0);
-    mFed2->setTimeDelta (1.0);
-
-    auto f1finish = std::async (std::launch::async, [&]() { mFed1->enterExecutionState (); });
-    mFed2->enterExecutionState ();
-    f1finish.wait ();
-
-    BOOST_CHECK (mFed1->getCurrentState () == helics::Federate::op_states::execution);
-    BOOST_CHECK (mFed2->getCurrentState () == helics::Federate::op_states::execution);
-
-    helics::data_block data (500, 'a');
-    helics::data_block data2 (400, 'b');
-
-    epid.send ("ep2", data);
-    epid2.send ("fed0/ep1", data2);
-    // move the time to 1.0
-    auto f1time = std::async (std::launch::async, [&]() { return mFed1->requestTime (1.0); });
-    auto gtime = mFed2->requestTime (1.0);
-
-    BOOST_CHECK_EQUAL (gtime, 1.0);
-    BOOST_CHECK_EQUAL (f1time.get (), 1.0);
-
-    auto res = mFed1->hasMessage ();
-    BOOST_CHECK (res);
-    res = epid.hasMessage ();
-    BOOST_CHECK (res);
-    epid2.hasMessage ();
-    BOOST_CHECK (res);
-
-    auto M1 = epid.getMessage ();
-    BOOST_REQUIRE(M1);
-    BOOST_REQUIRE_EQUAL (M1->data.size (), data2.size ());
-
-    BOOST_CHECK_EQUAL (M1->data[245], data2[245]);
-
-    auto M2 = epid2.getMessage ();
-    BOOST_REQUIRE(M2);
-    BOOST_REQUIRE_EQUAL (M2->data.size (), data.size ());
-
-    BOOST_CHECK_EQUAL (M2->data[245], data[245]);
-    mFed1->finalize ();
-    mFed2->finalize ();
-
-    BOOST_CHECK (mFed1->getCurrentState () == helics::Federate::op_states::finalize);
-    BOOST_CHECK (mFed2->getCurrentState () == helics::Federate::op_states::finalize);
-}
 
 #if ENABLE_TEST_TIMEOUTS > 0
 BOOST_TEST_DECORATOR (*utf::timeout (5))
 #endif
 BOOST_DATA_TEST_CASE (message_federate_send_receive_2fed_multisend, bdata::make (core_types), core_type)
 {
-    SetupTest<helics::MessageFederate> (core_type, 2);
-    auto mFed1 = GetFederateAs<helics::MessageFederate> (0);
-    auto mFed2 = GetFederateAs<helics::MessageFederate> (1);
+	SetupTest(helicsCreateMessageFederate,core_type, 2);
+	auto mFed1 = GetFederateAt(0);
+    auto mFed2 = GetFederateAt(1);
 
-    auto epid = mFed1->registerEndpoint ("ep1");
-    auto epid2 = mFed2->registerGlobalEndpoint ("ep2", "random");
+    auto epid = helicsFederateRegisterEndpoint (mFed1, "ep1", NULL);
+    auto epid2 = helicsFederateRegisterGlobalEndpoint (mFed2, "ep2", "random");
     // mFed1->getCorePointer()->setLoggingLevel(0, 5);
-    mFed1->setTimeDelta (1.0);
-    mFed2->setTimeDelta (1.0);
+    helicsFederateSetTimeDelta (mFed1, 1.0);
+    helicsFederateSetTimeDelta (mFed2, 1.0);
 
-    auto f1finish = std::async (std::launch::async, [&]() { mFed1->enterExecutionState (); });
-    mFed2->enterExecutionState ();
-    f1finish.wait ();
+    helicsFederateEnterExecutionModeAsync (mFed1);
+    helicsFederateEnterExecutionMode (mFed2);
+    helicsFederateEnterExecutionModeComplete (mFed1);
 
-    BOOST_CHECK (mFed1->getCurrentState () == helics::Federate::op_states::execution);
-    BOOST_CHECK (mFed2->getCurrentState () == helics::Federate::op_states::execution);
+    federate_state mFed1State = helics_execution_state;
+	helicsFederateGetState(mFed1, &mFed1State);
+	BOOST_CHECK (mFed1State == helics_execution_state);
+    federate_state mFed2State = helics_execution_state;
+	helicsFederateGetState(mFed2, &mFed2State);
+	BOOST_CHECK (mFed2State == helics_execution_state);
 
-    helics::data_block data1 (500, 'a');
-    helics::data_block data2 (400, 'b');
-    helics::data_block data3 (300, 'c');
-    helics::data_block data4 (200, 'd');
-    mFed1->sendMessage (epid, "ep2", data1);
-    mFed1->sendMessage (epid, "ep2", data2);
-    mFed1->sendMessage (epid, "ep2", data3);
-    mFed1->sendMessage (epid, "ep2", data4);
+    std::string data1 (500, 'a');
+    std::string data2 (400, 'b');
+    std::string data3 (300, 'c');
+    std::string data4 (200, 'd');
+    helicsEndpointSendEventRaw (epid, "ep2", data1.c_str(), 500, 0.0);
+    helicsEndpointSendEventRaw (epid, "ep2", data2.c_str(), 400, 0.0);
+    helicsEndpointSendEventRaw (epid, "ep2", data3.c_str(), 300, 0.0);
+    helicsEndpointSendEventRaw (epid, "ep2", data4.c_str(), 200, 0.0);
     // move the time to 1.0
-    auto f1time = std::async (std::launch::async, [&]() { return mFed1->requestTime (1.0); });
-    auto gtime = mFed2->requestTime (1.0);
+	helics_time_t time;
+    helicsFederateRequestTimeAsync (mFed1, 1.0);
+    helics_time_t gtime;
+    helicsFederateRequestTime (mFed2, 1.0, &gtime);
+    helicsFederateRequestTimeComplete (mFed1, &time);
 
     BOOST_CHECK_EQUAL (gtime, 1.0);
-    BOOST_CHECK_EQUAL (f1time.get (), 1.0);
+    BOOST_CHECK_EQUAL (time, 1.0);
 
-    BOOST_CHECK (!mFed1->hasMessage ());
+    auto res = helicsFederateHasMessage (mFed1);
+    BOOST_CHECK (!res);
 
-    BOOST_CHECK (!mFed1->hasMessage (epid));
-    auto cnt = mFed2->receiveCount (epid2);
+    res = helicsEndpointHasMessage (epid);
+    BOOST_CHECK (!res);
+    auto cnt = helicsEndpointReceiveCount (epid2);
     BOOST_CHECK_EQUAL (cnt, 4);
 
-    auto M1 = mFed2->getMessage (epid2);
-    BOOST_REQUIRE(M1);
-    BOOST_REQUIRE_EQUAL (M1->data.size (), data1.size ());
+    auto M1 = helicsEndpointGetMessage (epid2);
+    //BOOST_REQUIRE(M1);
+    BOOST_REQUIRE_EQUAL (M1.length, 500);
 
-    BOOST_CHECK_EQUAL (M1->data[245], data1[245]);
+    BOOST_CHECK_EQUAL (M1.data[245], 'a');
     // check the count decremented
-    cnt = mFed2->receiveCount (epid2);
+    cnt = helicsEndpointReceiveCount (epid2);
     BOOST_CHECK_EQUAL (cnt, 3);
-    auto M2 = mFed2->getMessage ();
-    BOOST_REQUIRE(M2);
-    BOOST_REQUIRE_EQUAL (M2->data.size (), data2.size ());
-    BOOST_CHECK_EQUAL (M2->data[245], data2[245]);
-    cnt = mFed2->receiveCount (epid2);
+    auto M2 = helicsEndpointGetMessage (epid2);
+    //BOOST_REQUIRE(M2);
+    BOOST_REQUIRE_EQUAL (M2.length, 400);
+    BOOST_CHECK_EQUAL (M2.data[245], 'b');
+    cnt = helicsEndpointReceiveCount (epid2);
     BOOST_CHECK_EQUAL (cnt, 2);
 
-    auto M3 = mFed2->getMessage ();
-    auto M4 = mFed2->getMessage (epid2);
-    BOOST_REQUIRE(M3);
-    BOOST_REQUIRE(M4);
-    BOOST_CHECK_EQUAL (M3->data.size (), data3.size ());
-    BOOST_CHECK_EQUAL (M4->data.size (), data4.size ());
+    auto M3 = helicsEndpointGetMessage (epid2);
+    auto M4 = helicsEndpointGetMessage (epid2);
+    //BOOST_REQUIRE(M3);
+    //BOOST_REQUIRE(M4);
+    BOOST_CHECK_EQUAL (M3.length, 300);
+    BOOST_CHECK_EQUAL (M4.length, 200);
 
-    BOOST_CHECK_EQUAL (M4->source, "fed0/ep1");
-    BOOST_CHECK_EQUAL (M4->dest, "ep2");
-    BOOST_CHECK_EQUAL (M4->original_source, "fed0/ep1");
-    BOOST_CHECK_EQUAL (M4->time, 0.0);
-    mFed1->finalize ();
-    mFed2->finalize ();
+    BOOST_CHECK_EQUAL (M4.source, "fed0/ep1");
+    BOOST_CHECK_EQUAL (M4.dest, "ep2");
+    BOOST_CHECK_EQUAL (M4.original_source, "fed0/ep1");
+    BOOST_CHECK_EQUAL (M4.time, 0.0);
+    helicsFederateFinalize(mFed1);
+    helicsFederateFinalize(mFed2);
 
-    BOOST_CHECK (mFed1->getCurrentState () == helics::Federate::op_states::finalize);
-    BOOST_CHECK (mFed2->getCurrentState () == helics::Federate::op_states::finalize);
+	mFed1State = federate_state::helics_finalize_state;
+	helicsFederateGetState(mFed1, &mFed1State);
+	BOOST_CHECK (mFed1State == federate_state::helics_finalize_state);
+	mFed2State = federate_state::helics_finalize_state;
+	helicsFederateGetState(mFed2, &mFed2State);
+	BOOST_CHECK (mFed2State == federate_state::helics_finalize_state);
 }
+
 //#define ENABLE_OUTPUT
 //trivial Federate that sends Messages and echoes a ping with a pong
 
 class pingpongFed
 {
   private:
-    std::unique_ptr<helics::MessageFederate> mFed;
-    helics::Time delta;  // the minimum time delta for the federate
+	helics_federate mFed;
+	helics_time_t delta;  // the minimum time delta for the federate
     std::string name;  //!< the name of the federate
-    helics::core_type coreType;
-    std::vector<std::pair<helics::Time, std::string>> triggers;
-    helics::endpoint_id_t ep;
+    std::string coreType;
+    std::vector<std::pair<helics_time_t, std::string>> triggers;
+    helics_endpoint ep;
     int index = 0;
 
   public:
     int pings = 0;  //!< the number of pings received
     int pongs = 0;  //!< the number of pongs received
   public:
-    pingpongFed (std::string fname, helics::Time tDelta, helics::core_type ctype)
+    pingpongFed (std::string fname, helics_time_t tDelta, std::string ctype)
         : delta (tDelta), name (std::move (fname)), coreType (ctype)
     {
         if (delta <= 0.0)
@@ -358,55 +311,59 @@ class pingpongFed
   private:
     void initialize ()
     {
-        helics::FederateInfo fi (name);
-        fi.coreName = "pptest";
-        fi.coreType = coreType;
-        fi.coreInitString = "3";
-        fi.timeDelta = delta;
+    	helics_federate_info_t fi = helicsFederateInfoCreate();
+    	helicsFederateInfoSetFederateName(fi, name.c_str());
+    	helicsFederateInfoSetCoreName(fi, "pptest");
+    	helicsFederateInfoSetCoreTypeFromString(fi, coreType.c_str());
+    	helicsFederateInfoSetCoreInitString(fi, "3");
+    	helicsFederateInfoSetTimeDelta(fi, delta);
 #ifdef ENABLE_OUTPUT
         std::cout << std::string ("about to create federate ") + name + "\n";
 #endif
-        mFed = std::make_unique<helics::MessageFederate> (fi);
+        mFed = helicsCreateMessageFederate(fi);
 #ifdef ENABLE_OUTPUT
         std::cout << std::string ("registering federate ") + name + "\n";
 #endif
-        ep = mFed->registerEndpoint ("port");
+        ep = helicsFederateRegisterEndpoint (mFed, "port", NULL);
     }
 
   private:
-    void processMessages (helics::Time currentTime)
+    void processMessages (helics_time_t currentTime)
     {
-        while (mFed->hasMessage (ep))
+        while (helicsEndpointHasMessage (ep))
         {
-            auto mess = mFed->getMessage (ep);
-            auto messString = mess->data.to_string ();
+            auto mess = helicsEndpointGetMessage (ep);
+            std::string messString (mess.data);
             if (messString == "ping")
             {
 #ifdef ENABLE_OUTPUT
-                std::cout << name << " :receive ping from " << std::string (mess->source) << " at time "
+                std::cout << name << " :receive ping from " << std::string (mess.source) << " at time "
                           << static_cast<double> (currentTime) << '\n';
 #endif
-                mess->data = "pong";
-                mess->dest = mess->source;
-                mess->source = name;
-                mess->original_source = mess->source;
-                mess->time = currentTime;
-                mFed->sendMessage (ep, std::move (mess));
+                message_t replyMess;
+                replyMess.data = "pong";
+                replyMess.length = 4;
+                replyMess.dest = mess.source;
+                replyMess.source = name.c_str();
+                replyMess.original_source = mess.dest;
+                replyMess.original_dest = mess.source;
+                replyMess.time = currentTime;
+                helicsEndpointSendMessage (ep, &replyMess);
                 pings++;
             }
             else if (messString == "pong")
             {
                 pongs++;
 #ifdef ENABLE_OUTPUT
-                std::cout << name << " :receive pong from " << std::string (mess->source) << " at time "
+                std::cout << name << " :receive pong from " << std::string (mess.source) << " at time "
                           << static_cast<double> (currentTime) << '\n';
 #endif
             }
         }
     }
-    void mainLoop (helics::Time finish)
+    void mainLoop (helics_time_t finish)
     {
-        helics::Time nextTime = 0;
+    	helics_time_t nextTime = 0;
         while (nextTime <= finish)
         {
             processMessages (nextTime);
@@ -418,7 +375,15 @@ class pingpongFed
                     std::cout << name << ": send ping to " << triggers[index].second << " at time "
                               << static_cast<double> (nextTime) << '\n';
 #endif
-                    mFed->sendMessage (ep, triggers[index].second, "ping");
+                    message_t mess;
+                    mess.data = "ping";
+                    mess.length = 4;
+                    mess.dest = triggers[index].second.c_str();
+                    mess.source = name.c_str();
+                    mess.original_source = name.c_str();
+                    mess.original_dest = triggers[index].second.c_str();
+                    mess.time = triggers[index].first;
+                    helicsEndpointSendMessage (ep, &mess);
                     ++index;
                     if (index >= static_cast<int> (triggers.size ()))
                     {
@@ -426,23 +391,23 @@ class pingpongFed
                     }
                 }
             }
-            nextTime += delta;
-            nextTime = mFed->requestTime (nextTime);
+            helics_time_t requestTime = nextTime + delta;
+            helicsFederateRequestTime (mFed, requestTime, &nextTime);
         }
-        mFed->finalize ();
+        helicsFederateFinalize (mFed);
     }
 
   public:
-    void run (helics::Time finish)
+    void run (helics_time_t finish)
     {
         initialize ();
-        mFed->enterExecutionState ();
+        helicsFederateEnterExecutionMode (mFed);
 #ifdef ENABLE_OUTPUT
         std::cout << std::string ("entering Execute Mode ") + name + "\n";
 #endif
         mainLoop (finish);
     }
-    void addTrigger (helics::Time triggerTime, const std::string &target)
+    void addTrigger (helics_time_t triggerTime, const std::string &target)
     {
         triggers.emplace_back (triggerTime, target);
     }
@@ -459,10 +424,9 @@ BOOST_DATA_TEST_CASE (threefedPingPong, bdata::make (core_types), core_type)
     }
     AddBroker (core_type, "3");
 
-    auto ctype = helics::coreTypeFromString (core_type);
-    pingpongFed p1 ("fedA", 0.5, ctype);
-    pingpongFed p2 ("fedB", 0.5, ctype);
-    pingpongFed p3 ("fedC", 0.5, ctype);
+    pingpongFed p1 ("fedA", 0.5, core_type);
+    pingpongFed p2 ("fedB", 0.5, core_type);
+    pingpongFed p3 ("fedC", 0.5, core_type);
 
     p1.addTrigger (0.5, "fedB/port");
     p1.addTrigger (0.5, "fedC/port");
@@ -491,75 +455,69 @@ BOOST_TEST_DECORATOR (*utf::timeout (5))
 #endif
 BOOST_DATA_TEST_CASE (test_time_interruptions, bdata::make (core_types), core_type)
 {
-    SetupTest<helics::MessageFederate> (core_type, 2);
-    auto mFed1 = GetFederateAs<helics::MessageFederate> (0);
-    auto mFed2 = GetFederateAs<helics::MessageFederate> (1);
+	SetupTest(helicsCreateMessageFederate,core_type, 2);
+	auto mFed1 = GetFederateAt(0);
+    auto mFed2 = GetFederateAt(1);
 
-    auto epid = mFed1->registerEndpoint ("ep1");
-    auto epid2 = mFed2->registerGlobalEndpoint ("ep2", "random");
-    mFed1->setTimeDelta (1.0);
-    mFed2->setTimeDelta (0.5);
+    auto epid = helicsFederateRegisterEndpoint (mFed1, "ep1", NULL);
+    auto epid2 = helicsFederateRegisterGlobalEndpoint (mFed2, "ep2", "random");
+    helicsFederateSetTimeDelta (mFed1, 1.0);
+    helicsFederateSetTimeDelta (mFed2, 0.5);
 
-    auto f1finish = std::async (std::launch::async, [&]() { mFed1->enterExecutionState (); });
-    mFed2->enterExecutionState ();
-    f1finish.wait ();
+    helicsFederateEnterExecutionModeAsync (mFed1);
+    helicsFederateEnterExecutionMode (mFed2);
+    helicsFederateEnterExecutionModeComplete (mFed1);
 
-    BOOST_CHECK (mFed1->getCurrentState () == helics::Federate::op_states::execution);
-    BOOST_CHECK (mFed2->getCurrentState () == helics::Federate::op_states::execution);
+    federate_state mFed1State = helics_execution_state;
+	helicsFederateGetState(mFed1, &mFed1State);
+	BOOST_CHECK (mFed1State == helics_execution_state);
+    federate_state mFed2State = helics_execution_state;
+	helicsFederateGetState(mFed2, &mFed2State);
+	BOOST_CHECK (mFed2State == helics_execution_state);
 
-    helics::data_block data (500, 'a');
-    helics::data_block data2 (400, 'b');
+    std::string data1 (500, 'a');
+    std::string data2 (400, 'b');
 
-    mFed1->sendMessage (epid, "ep2", data);
-    mFed2->sendMessage (epid2, "fed0/ep1", data2);
+    helicsEndpointSendEventRaw (epid, "ep2", data1.c_str(), 500, 0.0);
+	helicsEndpointSendEventRaw (epid2, "fed0/ep1", data2.c_str(), 400, 0.0);
     // move the time to 1.0
-    auto f1time = std::async (std::launch::async, [&]() { return mFed1->requestTime (1.0); });
-    auto gtime = mFed2->requestTime (1.0);
+	helics_time_t time;
+    helicsFederateRequestTimeAsync (mFed1, 1.0);
+    helics_time_t gtime;
+    helicsFederateRequestTime (mFed2, 1.0, &gtime);
+
 
     BOOST_REQUIRE_EQUAL (gtime, 0.5);
 
-    BOOST_REQUIRE (mFed2->hasMessage (epid));
+    auto res = helicsFederateHasMessage (mFed2);
+    BOOST_CHECK (res);
 
-    auto M2 = mFed2->getMessage (epid2);
-    BOOST_REQUIRE_EQUAL (M2->data.size (), data.size ());
+    auto M2 = helicsEndpointGetMessage (epid2);
+    BOOST_REQUIRE_EQUAL (M2.length, 500);
 
-    BOOST_CHECK_EQUAL (M2->data[245], data[245]);
+    BOOST_CHECK_EQUAL (M2.data[245], 'a');
 
-    gtime = mFed2->requestTime (1.0);
+    helicsFederateRequestTime (mFed2, 1.0, &gtime);
+    helicsFederateRequestTimeComplete (mFed1, &time);
     BOOST_CHECK_EQUAL (gtime, 1.0);
 
-    BOOST_CHECK_EQUAL (f1time.get (), 1.0);
-    auto M1 = mFed1->getMessage (epid);
-    BOOST_CHECK (M1);
-    if (M1)
-    {
-        BOOST_CHECK_EQUAL (M1->data.size (), data2.size ());
-        if (M1->data.size () > 245)
-        {
-            BOOST_CHECK_EQUAL (M1->data[245], data2[245]);
-        }
-    }
+    BOOST_CHECK_EQUAL (time, 1.0);
+    auto M1 = helicsEndpointGetMessage (epid);
+    //BOOST_CHECK (M1);
+    BOOST_REQUIRE_EQUAL (M1.length, 400);
+    BOOST_CHECK_EQUAL (M1.data[245], 'b');
 
-    BOOST_CHECK (mFed1->hasMessage () == false);
-    mFed1->finalize ();
-    mFed2->finalize ();
+    res = helicsFederateHasMessage (mFed1);
+    BOOST_CHECK (!res);
+    helicsFederateFinalize(mFed1);
+    helicsFederateFinalize(mFed2);
 
-    BOOST_CHECK (mFed1->getCurrentState () == helics::Federate::op_states::finalize);
-    BOOST_CHECK (mFed2->getCurrentState () == helics::Federate::op_states::finalize);
+	mFed1State = federate_state::helics_finalize_state;
+	helicsFederateGetState(mFed1, &mFed1State);
+	BOOST_CHECK (mFed1State == federate_state::helics_finalize_state);
+	mFed2State = federate_state::helics_finalize_state;
+	helicsFederateGetState(mFed2, &mFed2State);
+	BOOST_CHECK (mFed2State == federate_state::helics_finalize_state);
 }
-
-BOOST_AUTO_TEST_CASE (test_file_load)
-{
-    helics::MessageFederate mFed (std::string (TEST_DIR) + "/test_files/example_message_fed.json");
-
-    BOOST_CHECK_EQUAL (mFed.getName (), "messageFed");
-
-    BOOST_CHECK_EQUAL (mFed.getEndpointCount (), 2);
-    auto id = mFed.getEndpointId ("ept1");
-    BOOST_CHECK_EQUAL (mFed.getEndpointType (id), "genmessage");
-
-    mFed.disconnect ();
-}
-*/
 BOOST_AUTO_TEST_SUITE_END ()
 
