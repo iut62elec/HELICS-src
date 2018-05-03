@@ -5,7 +5,7 @@ pip --version
 pip3 --version
 
 # Install required python packages
-python3 -m pip install sphinx
+python3 -m pip install sphinx<1.7.0
 python3 -m pip install ghp-import
 python3 -m pip install breathe
 python3 -m pip install sphinx_rtd_theme
