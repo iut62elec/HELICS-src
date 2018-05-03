@@ -44,6 +44,7 @@ jobs:
   include:
     - if: branch IN (doxy-gen)
       os: linux
+      sudo: true
       language: python
       python:
         - "3.6"
