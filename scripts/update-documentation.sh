@@ -1,5 +1,9 @@
 #!/bin/bash
 
+python3 --version
+pip --version
+pip3 --version
+
 # Install required python packages
 python3 -m pip install --user sphinx
 python3 -m pip install --user ghp-import
