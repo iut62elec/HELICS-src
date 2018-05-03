@@ -55,8 +55,10 @@ jobs:
             - pandoc
             - python3-sphinx
       env:
-          - MATRIX_EVAL="COMPILER=gcc && CC=gcc-6 && CXX=g++-6"
+        - MATRIX_EVAL="COMPILER=gcc && CC=gcc-6 && CXX=g++-6"
       install:
+        - ${TRAVIS_BUILD_DIR}/scripts/install-dependency.sh boost 1.65.0 ${TRAVIS_BUILD_DIR}/dependencies/boost
+        - export Boost_DIR=${CI_DEPENDENCY_DIR}/boost
       script:
         - cd ${TRAVIS_BUILD_DIR}/docs
         - ${TRAVIS_BUILD_DIR}/scripts/update-documentation.sh
