@@ -27,7 +27,7 @@ _basic_env:
         - g++-6
         - valgrind
 - &linux_base
-  if: type != cron
+  if: (type != cron) AND (NOT (branch IN (doxy-gen)))
   os: linux
   compiler: gcc
 - &osx_base
@@ -42,6 +42,26 @@ jobs:
     - os: osx
 
   include:
+    - if: branch IN (doxy-gen)
+      os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-6
+            - doxygen
+            - pandoc
+            - python3-sphinx
+      env:
+          - MATRIX_EVAL="COMPILER=gcc && CC=gcc-6 && CXX=g++-6"
+      install:
+      script:
+        - cd ${TRAVIS_BUILD_DIR}/docs
+        - ${TRAVIS_BUILD_DIR}/scripts/update-documentation.sh
+      before_cache:
+
     # XCode 6.4, OS X 10.10
     - <<: *osx_base
       env:
