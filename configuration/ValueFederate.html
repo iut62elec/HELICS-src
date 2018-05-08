@@ -1,0 +1,448 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Value Federates &mdash; HELICS-src  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/HELICS_Logo.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> HELICS-src
+          
+
+          
+            
+            <img src="../_static/HELICS_Logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/windows.html">Windows Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#windows-installers">Windows Installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/mac.html">Mac Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-using-brew">Install using brew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-from-source">Install from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#id1">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-using-gcc-and-python">Building HELICS using gcc and python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-matlab-support">Building HELICS with MATLAB support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/linux.html">Ubuntu Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation/linux.html#notes-for-ubuntu">Notes for Ubuntu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html">HELICS with Python3 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html#helics-with-python2-installation">HELICS with Python2 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html#helics-with-gcc-and-python3-installation">HELICS with GCC and Python3 Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-matlab-installation"># HELICS with MATLAB Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/python.html">Python Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/java.html">Java Minimal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/matlab.html">MATLAB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#building-helics-with-matlab-extension">Building HELICS with matlab extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#build-swig-matlab-source">Build SWIG MATLAB source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#compile-matlab-extension">Compile MATLAB extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/types-of-federates.html">Types of Federates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/pubsub-vs-message.html">Pub/Sub vs Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/filters.html">Filters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#federation">Federation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-delay">Example with delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-communication-system">Example with communication system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/interfaces.html">Interfacing with HELICS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/style.html">Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/style.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/swig.html">Generating SWIG extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/tests.html">Run tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/docs.html">Generating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/contributing.html">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#submitting-a-pull-request">Submitting a Pull Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#opening-an-issue">Opening an Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Recorder.html">Recorder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#json-configuration">JSON configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#output">output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#map-file-output">Map file output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Player.html">Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Source.html">Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/App.html">helics_app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#echo">Echo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#player">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#recorder">Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#tracer">Tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#broker">Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/cmdArgs.html">Command Line Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Echo.html">Echo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Echo.html#command-line-arguments">Command line arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Tracer.html">Tracer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api-reference/index.html">C API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gmlc-tdc.github.io/HELICS-src/doxygen/">API Doxygen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELICS-src</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Value Federates</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/configuration/ValueFederate.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="value-federates">
+<h1>Value Federates<a class="headerlink" href="#value-federates" title="Permalink to this headline">¶</a></h1>
+<p>Value Federates provide the interfaces for registering publications and
+subscriptions and sending and receiving values through those interfaces.
+Publications and Subscriptions can be configured through API calls or
+through file configurations</p>
+<div class="section" id="api-calls">
+<h2>API calls<a class="headerlink" href="#api-calls" title="Permalink to this headline">¶</a></h2>
+<p>Publications and Subscriptions can be declared through ValueFederate
+methods or through Endpoint objects these are defined in
+ValueFederate.hpp and Publications.hpp and Subscriptions.hpp. For the
+MessageFederate api the register calls return a publication_id_t or
+subscription_id_t value that must be used whenever the publication or
+subscription is referenced. The object api contains those calls in a
+separate object</p>
+<p>TODO:: add links to other generated documents</p>
+<div class="section" id="file-configuration">
+<h3>file configuration<a class="headerlink" href="#file-configuration" title="Permalink to this headline">¶</a></h3>
+<p>File based configuration looks primarily at an “publications” or
+“subscriptions” JSON array</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">json</span> <span class="n">file</span> <span class="p">(</span><span class="k">except</span> <span class="n">comments</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">recognized</span> <span class="ow">in</span> <span class="n">standard</span> <span class="n">JSON</span><span class="p">)</span>
+<span class="p">{</span> <span class="o">//</span><span class="n">example</span> <span class="n">json</span> <span class="n">configuration</span> <span class="n">file</span> <span class="k">for</span> <span class="n">a</span> <span class="n">value</span> <span class="n">federate</span> <span class="nb">all</span> <span class="n">arguments</span> <span class="n">are</span> <span class="n">optional</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;valueFed&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">federate</span>
+    <span class="o">//</span><span class="n">possible</span> <span class="n">flags</span>
+    <span class="s2">&quot;observer&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>  <span class="o">//</span> <span class="n">indicator</span> <span class="n">that</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">send</span> <span class="n">anything</span>
+    <span class="s2">&quot;rollback&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="o">//</span> <span class="n">indicator</span> <span class="n">that</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">can</span> <span class="n">use</span> <span class="n">rollback</span> <span class="o">-</span><span class="n">NOTE</span><span class="p">:</span> <span class="ow">not</span> <span class="n">used</span> <span class="n">at</span> <span class="n">present</span>
+    <span class="s2">&quot;only_update_on_change&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span> <span class="o">//</span><span class="n">indicator</span> <span class="n">that</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">should</span> <span class="n">only</span> <span class="n">indicate</span> <span class="n">updated</span> <span class="n">values</span> <span class="n">on</span> <span class="n">change</span>
+    <span class="s2">&quot;only_transmit_on_change&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>  <span class="o">//</span><span class="n">indicator</span> <span class="n">that</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">should</span> <span class="n">only</span> <span class="n">publish</span> <span class="k">if</span> <span class="n">the</span> <span class="n">value</span> <span class="n">changed</span>
+    <span class="s2">&quot;source_only&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span>  <span class="o">//</span><span class="n">indicator</span> <span class="n">that</span> <span class="n">the</span> <span class="n">federate</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">a</span> <span class="n">source</span> <span class="ow">and</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">expected</span> <span class="n">to</span> <span class="n">receive</span> <span class="n">anything</span>
+    <span class="s2">&quot;uninterruptible&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">,</span> <span class="o">//</span><span class="n">indicator</span> <span class="n">that</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">should</span> <span class="n">only</span> <span class="k">return</span> <span class="n">requested</span> <span class="n">times</span>
+    <span class="s2">&quot;coreType&quot;</span><span class="p">:</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="o">//</span><span class="n">the</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the</span> <span class="n">core</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="s2">&quot;zmq&quot;</span><span class="p">,</span><span class="s2">&quot;udp&quot;</span><span class="p">,</span><span class="s2">&quot;icp&quot;</span><span class="p">,</span><span class="s2">&quot;tcp&quot;</span><span class="p">,</span><span class="s2">&quot;mpi&quot;</span>
+    <span class="s2">&quot;coreName&quot;</span><span class="p">:</span><span class="s2">&quot;the name of the core&quot;</span><span class="p">,</span>  <span class="o">//</span><span class="n">this</span> <span class="n">matters</span> <span class="n">most</span> <span class="k">for</span> <span class="n">icp</span> <span class="ow">and</span> <span class="n">test</span> <span class="n">cores</span><span class="p">,</span> <span class="n">can</span> <span class="n">be</span> <span class="n">empty</span>
+    <span class="s2">&quot;coreInit&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">initialization</span> <span class="n">string</span> <span class="k">for</span> <span class="n">the</span> <span class="n">core</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">form</span> <span class="n">of</span> <span class="n">a</span> <span class="n">command</span> <span class="n">line</span> <span class="n">arguments</span>
+    <span class="s2">&quot;maxIterations&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="o">//</span><span class="n">the</span> <span class="n">maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">iterations</span> <span class="k">for</span> <span class="n">a</span> <span class="n">time</span> <span class="n">step</span>
+    <span class="s2">&quot;period&quot;</span><span class="p">:</span>  <span class="mf">1.0</span><span class="p">,</span> <span class="o">//</span><span class="n">the</span> <span class="n">period</span> <span class="k">with</span> <span class="n">which</span> <span class="n">federate</span> <span class="n">may</span> <span class="k">return</span> <span class="n">time</span>
+    <span class="s2">&quot;offset&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">offset</span> <span class="n">shift</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">period</span>
+    <span class="s2">&quot;timeDelta&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">minimum</span> <span class="n">time</span> <span class="n">between</span> <span class="n">subsequent</span> <span class="k">return</span> <span class="n">times</span>
+    <span class="s2">&quot;outputDelay&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="o">//</span><span class="n">the</span> <span class="n">propagation</span> <span class="n">delay</span> <span class="k">for</span> <span class="n">federates</span> <span class="n">to</span> <span class="n">send</span> <span class="n">data</span>
+    <span class="s2">&quot;inputDelay&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="o">//</span><span class="n">the</span> <span class="nb">input</span> <span class="n">delay</span> <span class="k">for</span> <span class="n">external</span> <span class="n">data</span> <span class="n">to</span> <span class="n">propagate</span> <span class="n">to</span> <span class="n">federates</span>
+
+<span class="o">//</span><span class="n">Publications</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">federate</span>
+<span class="s2">&quot;publications&quot;</span><span class="p">:[</span>
+<span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;pub1&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">publication</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">assocaited</span> <span class="k">with</span> <span class="n">a</span> <span class="n">publication</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+    <span class="s2">&quot;unit&quot;</span><span class="p">:</span><span class="s2">&quot;m&quot;</span><span class="p">,</span>  <span class="o">//</span> <span class="n">the</span> <span class="n">units</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">a</span> <span class="n">publication</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+    <span class="s2">&quot;global&quot;</span><span class="p">:</span><span class="n">true</span> <span class="o">//</span><span class="nb">set</span> <span class="n">to</span> <span class="n">true</span> <span class="n">to</span> <span class="n">make</span> <span class="n">the</span> <span class="n">key</span> <span class="k">global</span> <span class="p">(</span><span class="n">default</span> <span class="ow">is</span> <span class="n">false</span> <span class="ow">in</span> <span class="n">which</span> <span class="n">case</span> <span class="n">the</span> <span class="n">publication</span> <span class="ow">is</span> <span class="n">prepended</span> <span class="k">with</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">name</span><span class="p">)</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;pub2&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">publication</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;double&quot;</span> <span class="o">//</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">assocaited</span> <span class="k">with</span> <span class="n">a</span> <span class="n">publication</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+    <span class="o">//</span><span class="n">no</span> <span class="k">global</span><span class="p">:</span><span class="n">true</span> <span class="n">implies</span> <span class="n">this</span> <span class="n">will</span> <span class="n">have</span> <span class="n">the</span> <span class="n">federate</span> <span class="n">name</span> <span class="n">prepended</span> <span class="n">like</span> <span class="n">valueFed</span><span class="o">/</span><span class="n">pub2</span>
+<span class="p">}</span>
+<span class="p">],</span>
+<span class="o">//</span><span class="n">subscriptions</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">federate</span>
+<span class="s2">&quot;subscriptions&quot;</span><span class="p">:[</span>
+<span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;pub1&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">key</span> <span class="n">of</span> <span class="n">the</span> <span class="n">publication</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;double&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="nb">type</span> <span class="n">assocaited</span> <span class="k">with</span> <span class="n">a</span> <span class="n">publication</span> <span class="p">(</span><span class="n">optional</span><span class="p">)</span>
+    <span class="s2">&quot;required&quot;</span><span class="p">:</span><span class="n">true</span> <span class="o">//</span><span class="nb">set</span> <span class="n">to</span> <span class="n">true</span> <span class="n">to</span> <span class="n">make</span> <span class="n">helics</span> <span class="n">issue</span> <span class="n">a</span> <span class="n">warning</span> <span class="k">if</span> <span class="n">the</span> <span class="n">publication</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;fedName/pub2&quot;</span><span class="p">,</span> <span class="o">//</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">publication</span> <span class="n">to</span> <span class="n">subscribe</span> <span class="n">to</span>
+    <span class="s2">&quot;shortcut&quot;</span><span class="p">:</span><span class="s2">&quot;pubshortcut&quot;</span>  <span class="o">//</span><span class="n">a</span> <span class="n">naming</span> <span class="n">shortcut</span> <span class="k">for</span> <span class="n">the</span> <span class="n">publication</span> <span class="k">for</span> <span class="n">later</span> <span class="n">retrieval</span>
+<span class="p">}</span>
+<span class="p">]</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Notes</p>
+<p>Shortcuts just provide a shortcut name for later reference instead of
+having to use a potentially longer key, the shortcut is only relevant
+inside a single federate</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright © 2017-2018,
+Battelle Memorial Institute; Lawrence Livermore National Security, LLC; Alliance for Sustainable Energy, LLC
+All rights reserved. See LICENSE file and DISCLAIMER for more details..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Recorder &mdash; HELICS-src  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/HELICS_Logo.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Player" href="Player.html" />
+    <link rel="prev" title="Apps" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> HELICS-src
+          
+
+          
+            
+            <img src="../_static/HELICS_Logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/windows.html">Windows Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#windows-installers">Windows Installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/mac.html">Mac Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-using-brew">Install using brew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-from-source">Install from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#id1">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-using-gcc-and-python">Building HELICS using gcc and python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-matlab-support">Building HELICS with MATLAB support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/linux.html">Ubuntu Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation/linux.html#notes-for-ubuntu">Notes for Ubuntu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html">HELICS with Python3 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html#helics-with-python2-installation">HELICS with Python2 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html#helics-with-gcc-and-python3-installation">HELICS with GCC and Python3 Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-matlab-installation"># HELICS with MATLAB Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/python.html">Python Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/java.html">Java Minimal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/matlab.html">MATLAB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#building-helics-with-matlab-extension">Building HELICS with matlab extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#build-swig-matlab-source">Build SWIG MATLAB source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#compile-matlab-extension">Compile MATLAB extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/types-of-federates.html">Types of Federates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/pubsub-vs-message.html">Pub/Sub vs Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/filters.html">Filters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#federation">Federation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-delay">Example with delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-communication-system">Example with communication system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/interfaces.html">Interfacing with HELICS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/style.html">Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/style.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/swig.html">Generating SWIG extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/tests.html">Run tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/docs.html">Generating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/contributing.html">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#submitting-a-pull-request">Submitting a Pull Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#opening-an-issue">Opening an Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Apps</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Recorder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json-configuration">JSON configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#output">output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#map-file-output">Map file output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Player.html">Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Player.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Player.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Player.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Player.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Player.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Source.html">Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Source.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Source.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Source.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Source.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="App.html">helics_app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="App.html#echo">Echo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="App.html#player">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="App.html#recorder">Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="App.html#tracer">Tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="App.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="App.html#broker">Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cmdArgs.html">Command Line Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Echo.html">Echo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Echo.html#command-line-arguments">Command line arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Tracer.html">Tracer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Tracer.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tracer.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Tracer.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Tracer.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api-reference/index.html">C API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gmlc-tdc.github.io/HELICS-src/doxygen/">API Doxygen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELICS-src</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Apps</a> &raquo;</li>
+        
+      <li>Recorder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apps/Recorder.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="recorder">
+<h1>Recorder<a class="headerlink" href="#recorder" title="Permalink to this headline">¶</a></h1>
+<p>The Recorder application is one of the HELICS apps available with the
+library Its purpose is to provide a easy way to capture data from a
+federation It acts as a federate that can “capture” values or messages
+from specific publications or direct endpoints or cloned endpoints which
+exist elsewhere</p>
+<div class="section" id="command-line-arguments">
+<h2>Command line arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>allowed options:
+
+command line only:
+  -? [ --help ]          produce help message
+  -v [ --version ]       display a version string
+  --config-file arg      specify a configuration file to use
+
+configuration:
+  --stop arg             the time to stop recording
+  --tags arg             tags to record, this argument may be specified any
+                         number of times
+  --endpoints arg        endpoints to capture, this argument may be specified
+                         multiple time
+  --sourceclone arg      existing endpoints to capture generated packets from,
+                         this argument may be specified multiple time
+  --destclone arg        existing endpoints to capture all packets with the
+                         specified endpoint as a destination, this argument may
+                         be specified multiple time
+  --clone arg            existing endpoints to clone all packets to and from
+  --capture arg          capture all the publications of a particular federate
+                         capture=&quot;fed1;fed2&quot;  supports multiple arguments or a
+                         comma separated list
+  -o [ --output ] arg    the output file for recording the data
+  --mapfile arg          write progress to a memory mapped file
+
+
+federate configuration
+  -b [ --broker ] arg    address of the broker to connect
+  -n [ --name ] arg      name of the player federate
+  --corename arg         the name of the core to create or find
+  -c [ --core ] arg      type of the core to connect to
+  --offset arg           the offset of the time steps
+  --period arg           the period of the federate
+  --timedelta arg        the time delta of the federate
+  -i [ --coreinit ] arg  the core initialization string
+  --inputdelay arg       the input delay on incoming communication of the
+                         federate
+  --outputdelay arg      the output delay for outgoing communication of the
+                         federate
+  -f [ --flags ] arg     named flags for the federate
+</pre></div>
+</div>
+<p>also permissible are all arguments allowed for federates and any
+specific broker specified:</p>
+<p>Command line reference</p>
+<p>the player executable also takes an untagged argument of a file name for
+example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">helics_recorder</span> <span class="n">record_file</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">stop</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Recorders support both delimited text files and json files some examples
+can be found in</p>
+<p><a class="reference external" href="https://github.com/GMLC-TDC/HELICS-src/tree/master/tests/helics/apps/test_files">Player configuation
+Examples</a></p>
+</div>
+<div class="section" id="config-file-detail">
+<h2>Config File Detail<a class="headerlink" href="#config-file-detail" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="subscriptions">
+<h3>subscriptions<a class="headerlink" href="#subscriptions" title="Permalink to this headline">¶</a></h3>
+<p>a simple example of a recorder file specifying some subscriptions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#FederateName topic1</span>
+
+<span class="n">sub</span> <span class="n">pub1</span>
+<span class="n">subscription</span> <span class="n">pub2</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">#</span></code> signifies a comment</p>
+<p>if only a single column is specified it is assumed to be a subscription</p>
+<p>for two column rows the second is the identifier arguments with spaces
+should be enclosed in quotes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">interface</th>
+<th class="head">description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>s, sub,
+subscription</td>
+<td>subscribe to a
+particular
+publication</td>
+</tr>
+<tr class="row-odd"><td>endpoint, ept,
+e</td>
+<td>generate an
+endpoint to
+capture all
+targetd packets</td>
+</tr>
+<tr class="row-even"><td>source,
+sourceclone,sr
+c</td>
+<td>capture all
+messages coming
+from a
+particular
+endpoint</td>
+</tr>
+<tr class="row-odd"><td>dest,
+destination,
+destclone</td>
+<td>capture all
+message going to
+a particular
+endpoint</td>
+</tr>
+<tr class="row-even"><td>capture</td>
+<td>capture all data
+coming from a
+particular
+federate</td>
+</tr>
+<tr class="row-odd"><td>clone</td>
+<td>capture all
+message going
+from or to a
+particular
+endpoint</td>
+</tr>
+</tbody>
+</table>
+<p>for 3 column rows the first must be either clone or capture for clone
+the second can be either source or destination and the third the
+endpoint name [for capture it can be either “endpoints” or
+“subscriptions”] NOTE:not fully working yet for capture</p>
+</div>
+<div class="section" id="json-configuration">
+<h3>JSON configuration<a class="headerlink" href="#json-configuration" title="Permalink to this headline">¶</a></h3>
+<p>recorders can also be specified via JSON files</p>
+<p>here are two examples of the text format and equivalent JSON</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#list publications and endpoints for a recorder</span>
+
+<span class="n">pub1</span>
+<span class="n">pub2</span>
+<span class="n">e</span> <span class="n">src1</span>
+</pre></div>
+</div>
+<p>JSON example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="s2">&quot;subscriptions&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;pub1&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span>
+                <span class="p">},</span> <span class="p">{</span>
+                        <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;pub2&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;double&quot;</span>
+                <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;endpoints&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;src1&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;global&quot;</span><span class="p">:</span><span class="n">true</span>
+                <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>some configuration can also be done through JSON through elements of
+“stop”,”local”,”separator”,”timeunits” and file elements can be used to
+load up additional files</p>
+</div>
+<div class="section" id="output">
+<h3>output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h3>
+<p>Recorders capture files in a format the Player can read see
+<a class="reference external" href="Player">Player</a></p>
+</div>
+</div>
+<div class="section" id="map-file-output">
+<h2>Map file output<a class="headerlink" href="#map-file-output" title="Permalink to this headline">¶</a></h2>
+<p>the recorder can generate a live file that can be used in process to see
+the progress of the Federation This is occasionally useful, though for
+many uses the <a class="reference external" href="Tracer">Tracer</a> will be more useful when it is
+completed</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Player.html" class="btn btn-neutral float-right" title="Player" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Apps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright © 2017-2018,
+Battelle Memorial Institute; Lawrence Livermore National Security, LLC; Alliance for Sustainable Energy, LLC
+All rights reserved. See LICENSE file and DISCLAIMER for more details..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

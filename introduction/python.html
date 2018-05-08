@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Python Example &mdash; HELICS-src  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/HELICS_Logo.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Java Minimal Example" href="java.html" />
+    <link rel="prev" title="Hello World" href="hello-world.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> HELICS-src
+          
+
+          
+            
+            <img src="../_static/HELICS_Logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/windows.html">Windows Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#windows-installers">Windows Installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/windows.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/mac.html">Mac Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-using-brew">Install using brew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#install-from-source">Install from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#id1">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-using-gcc-and-python">Building HELICS using gcc and python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#building-helics-with-matlab-support">Building HELICS with MATLAB support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/mac.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/linux.html">Ubuntu Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation/linux.html#notes-for-ubuntu">Notes for Ubuntu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/linux.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html">HELICS with Python3 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html#helics-with-python2-installation">HELICS with Python2 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/language.html#helics-with-gcc-and-python3-installation">HELICS with GCC and Python3 Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/language.html#helics-with-matlab-installation"># HELICS with MATLAB Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Introduction</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hello-world.html">Hello World</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Python Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="java.html">Java Minimal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matlab.html">MATLAB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="matlab.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matlab.html#building-helics-with-matlab-extension">Building HELICS with matlab extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matlab.html#build-swig-matlab-source">Build SWIG MATLAB source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matlab.html#compile-matlab-extension">Compile MATLAB extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matlab.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="types-of-federates.html">Types of Federates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pubsub-vs-message.html">Pub/Sub vs Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filters.html">Filters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="filters.html#federation">Federation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filters.html#example-with-delay">Example with delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filters.html#example-with-communication-system">Example with communication system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="interfaces.html">Interfacing with HELICS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/style.html">Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/style.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/swig.html">Generating SWIG extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/tests.html">Run tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/docs.html">Generating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/contributing.html">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#submitting-a-pull-request">Submitting a Pull Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#opening-an-issue">Opening an Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Recorder.html">Recorder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#json-configuration">JSON configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#output">output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#map-file-output">Map file output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Player.html">Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Source.html">Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/App.html">helics_app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#echo">Echo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#player">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#recorder">Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#tracer">Tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#broker">Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/cmdArgs.html">Command Line Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Echo.html">Echo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Echo.html#command-line-arguments">Command line arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Tracer.html">Tracer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api-reference/index.html">C API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gmlc-tdc.github.io/HELICS-src/doxygen/">API Doxygen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELICS-src</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Introduction</a> &raquo;</li>
+        
+      <li>Python Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/introduction/python.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="python-example">
+<h1>Python Example<a class="headerlink" href="#python-example" title="Permalink to this headline">¶</a></h1>
+<p>In the previous section, we covered the basics of a HELICS federate and
+how you can run multiple federates together to form a federation. In
+this section we will look at how to create a federation in Python. We
+will create a simple <code class="docutils literal notranslate"><span class="pre">pi-exchange</span></code> federation in Python with 2
+federates.</p>
+<p><strong>HELICS Python Setup</strong></p>
+<p>Before we run the Python <code class="docutils literal notranslate"><span class="pre">pi-exchange</span></code> federation, it is necessary to
+ensure that we have Python installed and that we have the HELICS Python
+built successfully and correctly on the machine.</p>
+<p>We recommend using Anaconda3/Miniconda3, although this should work with
+most versions of Python. To make an interface that is similar across
+different languages, we use SWIG to generate the Python bindings to the
+<code class="docutils literal notranslate"><span class="pre">helicsSharedLib</span></code> shared library. SWIG claims to be compatible with
+most Python versions, dating back to Python 2.0. And recommends that for
+the best results, one should consider using Python 2.3 or newer.</p>
+<p>Installation of HELICS on a Mac can be done using <code class="docutils literal notranslate"><span class="pre">brew</span></code> which comes
+with the ability to build the Python extension as well. HELICS can also
+be built from source and linked with the required Python version. See
+the page on the Installation instructions for more information regarding
+this.</p>
+<p><strong>Create a federations directory</strong></p>
+<p>Linux and Mac:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mkdir -p ~/federations/pi-exchange
+$ <span class="nb">cd</span> ~/federations/pi-exchange
+</pre></div>
+</div>
+<p>Windows CMD:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; mkdir %USERPROFILE%<span class="se">\f</span>ederations
+&gt; <span class="nb">cd</span> %USERPROFILE%<span class="se">\f</span>ederations
+&gt; mkdir pi-exchange
+&gt; <span class="nb">cd</span> pi-exchange
+</pre></div>
+</div>
+<p><strong>Writing the Python federation</strong></p>
+<p>Next, make a new source file and call it <code class="docutils literal notranslate"><span class="pre">pisender.py</span></code>. Copy the
+contents from
+<a class="reference external" href="https://github.com/GMLC-TDC/HELICS-src/blob/develop/examples/python/pi-exchange/pisender.py">pisender.py</a>
+and paste it into the file.</p>
+<p>Next, create a new source file and call it <code class="docutils literal notranslate"><span class="pre">hello_world_receiver.c</span></code>.
+Copy the contents from
+<a class="reference external" href="https://github.com/GMLC-TDC/HELICS-src/blob/develop/examples/python/pi-exchange/pireceiver.py">pireceiver.py</a>
+and paste it into the file.</p>
+<p>Save the files.</p>
+<p><strong>Running a federation</strong></p>
+<p>Linux and Mac:</p>
+<p>Next, open two terminals. In the first terminal, run the following
+command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python pisender.py
+</pre></div>
+</div>
+<p>In a second terminal, run the following command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python pireceiver.py
+</pre></div>
+</div>
+<p>If done correctly, you should see an output like so:</p>
+<div class="figure">
+<img alt="Python" src="../_images/python-example.png" />
+</div>
+<p>You should see something like the following in the PI RECEIVER window
+(2nd one in directions above)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python pireceiver.py
+PI RECEIVER: Helics version = 1.0.0.alpha (01-18-18)
+PI RECEIVER: Creating Federate Info
+PI RECEIVER: Setting Federate Info Name
+PI RECEIVER: Setting Federate Info Core Type
+PI RECEIVER: Setting Federate Info Init String
+PI RECEIVER: Setting Federate Info Time Delta
+PI RECEIVER: Setting Federate Info Logging
+PI RECEIVER: Creating Value Federate
+PI RECEIVER: Value federate created
+PI RECEIVER: Subscription registered
+PI RECEIVER: Entering execution mode
+PI RECEIVER: Current time is 5.0
+PI RECEIVER: Received value = 3.142857142857143 at time 5.0 from PI SENDER
+PI RECEIVER: Received value = 3.142857142857143 at time 6.0 from PI SENDER
+PI RECEIVER: Received value = 3.142857142857143 at time 7.0 from PI SENDER
+PI RECEIVER: Received value = 3.142857142857143 at time 8.0 from PI SENDER
+PI RECEIVER: Received value = 3.142857142857143 at time 9.0 from PI SENDER
+PI RECEIVER: Federate finalized
+end of master Object Holder destructor
+</pre></div>
+</div>
+<p>Corresponding output should appear from the PI SENDER (window 1).</p>
+<p><strong>Background:</strong> Running a HELICS federation (via low level commands)
+requires first starting a helics broker and then running the desired set
+of federates with it. In this case, the pisender starts this broker and
+then joins as a federate.</p>
+<p><strong>Tips</strong></p>
+<p>Ensure that the install location is added to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. If you’ve
+installed to the default installation, you may not need to do this. To
+ensure that the Python extension works correctly, you may add the
+following to your <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>. You can do so by pasting the following
+in your .bashrc file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;~/local/helics_install/python&quot;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="java.html" class="btn btn-neutral float-right" title="Java Minimal Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hello-world.html" class="btn btn-neutral" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright © 2017-2018,
+Battelle Memorial Institute; Lawrence Livermore National Security, LLC; Alliance for Sustainable Energy, LLC
+All rights reserved. See LICENSE file and DISCLAIMER for more details..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

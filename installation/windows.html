@@ -1,0 +1,557 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Windows Installation &mdash; HELICS-src  documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/HELICS_Logo.png"/>
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mac Installation" href="mac.html" />
+    <link rel="prev" title="Installation" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> HELICS-src
+          
+
+          
+            
+            <img src="../_static/HELICS_Logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Windows Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows-installers">Windows Installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-helics-with-python-support">Building HELICS with python support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mac.html">Mac Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#install-using-brew">Install using brew</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#install-from-source">Install from source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#id1">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#building-helics-using-gcc-and-python">Building HELICS using gcc and python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#building-helics-with-matlab-support">Building HELICS with MATLAB support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mac.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="linux.html">Ubuntu Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="linux.html#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linux.html#setup">Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="linux.html#notes-for-ubuntu">Notes for Ubuntu</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="linux.html#building-helics-with-python-support">Building HELICS with python support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="linux.html#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="language.html">HELICS with Python3 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html#helics-with-python2-installation">HELICS with Python2 Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language.html#helics-with-gcc-and-python3-installation">HELICS with GCC and Python3 Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="language.html#helics-with-matlab-installation"># HELICS with MATLAB Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/python.html">Python Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/java.html">Java Minimal Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/matlab.html">MATLAB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#building-helics-with-matlab-extension">Building HELICS with matlab extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#build-swig-matlab-source">Build SWIG MATLAB source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#compile-matlab-extension">Compile MATLAB extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/matlab.html#test-helics-matlab-extension">Test HELICS MATLAB extension</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/terminology.html">Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/types-of-federates.html">Types of Federates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/pubsub-vs-message.html">Pub/Sub vs Message</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/filters.html">Filters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#federation">Federation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-delay">Example with delay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../introduction/filters.html#example-with-communication-system">Example with communication system</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/interfaces.html">Interfacing with HELICS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developer-guide/index.html">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/style.html">Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/style.html#naming-conventions">Naming Conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/swig.html">Generating SWIG extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/tests.html">Run tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/docs.html">Generating Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../developer-guide/contributing.html">Contributing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#submitting-a-pull-request">Submitting a Pull Request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../developer-guide/contributing.html#opening-an-issue">Opening an Issue</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/index.html">Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Recorder.html">Recorder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#json-configuration">JSON configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Recorder.html#output">output</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Recorder.html#map-file-output">Map file output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Player.html">Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Player.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Player.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Source.html">Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Source.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#publications">publications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#messages">Messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Source.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/App.html">helics_app</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#echo">Echo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#player">Player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#recorder">Recorder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#tracer">Tracer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/App.html#broker">Broker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/cmdArgs.html">Command Line Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Echo.html">Echo</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Echo.html#command-line-arguments">Command line arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../apps/Tracer.html">Tracer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#command-line-arguments">Command line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apps/Tracer.html#config-file-detail">Config File Detail</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#subscriptions">subscriptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../apps/Tracer.html#json-configuration">JSON configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../c-api-reference/index.html">C API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://gmlc-tdc.github.io/HELICS-src/doxygen/">API Doxygen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">HELICS-src</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Windows Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/installation/windows.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+</style>
+<div class="section" id="windows-installation">
+<h1>Windows Installation<a class="headerlink" href="#windows-installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Microsoft Visual C++ 2015 or newer (MS Build Tools also works)</li>
+<li>CMake 3.4 or newer</li>
+<li>git</li>
+<li>Boost 1.58 or newer</li>
+<li>ZeroMQ 4.2.0 or newer (if ZeroMQ support is needed)</li>
+<li>MS-MPI v8 or newer (if MPI support is needed)</li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>To set up your environment:</p>
+<ol class="arabic simple">
+<li>Install Microsoft Visual C++ 2015 or newer</li>
+<li>Install
+<a class="reference external" href="http://www.boost.org/doc/libs/1_64_0/more/getting_started/windows.html">Boost</a>
+<a class="reference external" href="https://dl.bintray.com/boostorg/release/1.66.0/binaries/">Windows
+downloads</a>
+1.61 or later recommended (core library should build with 1.58, but
+tests will not). For CMake to detect it automatically either extract
+Boost to the root of your drive, or set the BOOST_INSTALL_PATH
+environment variable to the install location. The cmake will only
+automatically find boost 1.61 or newer. Building with Visual Studio
+2017 will require boost 1.65.1 or newer and cmake 3.9 or newer. Use
+14.0 versions for Visual Studio 2015, 14.1 files for Visual studio
+2017. Boost 1.66 with cmake 3.11 is the current recommended
+configuration.</li>
+<li><em>Optional</em> Install <a class="reference external" href="http://zeromq.org/build:_start">ZeroMQ</a> if you
+need ZeroMQ support and need a copy in a global system location. We
+recommend skipping this step and running cmake with the
+<code class="docutils literal notranslate"><span class="pre">AUTOBUILD_ZMQ=ON</span></code> option to automatically set up a project-only
+copy of ZeroMQ later on. The ZeroMQ Windows installer is <strong>very</strong>
+outdated and will not work with new versions of Visual Studio.</li>
+<li><em>Optional</em> Install
+<a class="reference external" href="https://msdn.microsoft.com/en-us/library/bb524831(v=vs.85).aspx">MS-MPI</a>
+if you need MPI support.</li>
+<li><em>Optional</em> Install <a class="reference external" href="http://www.swig.org/download.html">SWIG</a> if
+you wish to generate the interface libraries, appropriate build files
+are included in the repository so it shouldn’t be necessary to
+regenerate unless the libraries are modified</li>
+<li>Open a Visual Studio Command Prompt, and go to your working
+directory.</li>
+<li>Make sure <em>cmake</em> and <em>git</em> are available in the Command Prompt. If
+they aren’t, add them to the system PATH variable.</li>
+</ol>
+<p>Getting and building from source:</p>
+<ol class="arabic simple">
+<li>Set up your environment.</li>
+<li>Open a command prompt. Use git clone to check out a copy of HELICS.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/GMLC-TDC/HELICS-src.git
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Go to the checkedout HELICS project folder (the default folder name
+is HELICS-src). Create a build folder and open the build folder.
+Alternatively, cmake-gui can be used.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> HELICS-src
+mkdir build
+<span class="nb">cd</span> build
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Run cmake. It should automatically detect where MPI is installed if
+the system path variables are set up correctly, otherwise you will
+have to set the cmake path manually. The AUTOBUILD_ZMQ is set to ON
+so ZeroMQ will automatically be built unless the option is changed.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake ..
+</pre></div>
+</div>
+<p>If you need cmake to use a generator other than the default (ex:
+selecting between a 32-bit or 64-bit project), the -G option can be used
+to specify one of the generators listed by cmake –help. For Visual
+Studio 2017, the generator name would be
+<code class="docutils literal notranslate"><span class="pre">Visual</span> <span class="pre">Studio</span> <span class="pre">15</span> <span class="pre">2017</span> <span class="pre">[arch]</span></code>, where [arch] is optional and can be
+either Win64 for a 64-bit project, or left out to generate a 32-bit
+project. To avoid problems when building later, this should match the
+version of the Boost libraries you are using.</p>
+<p>If you installed boost into the root of the C or D drives with the
+default localtion (or the BOOST_INSTALL_PATH environment variable has
+been set), cmake should automatically detect their location. Otherwise
+the location will need to be manually given to cmake.</p>
+<ol class="arabic simple" start="5">
+<li>Open the Visual Studio solution generated by CMake. Under the <em>Build</em>
+menu, select <em>Build the Solution</em>. Alternatively, in the MSBuild
+command prompt, run the command msbuild HELICS.sln from the build
+folder to compile the entire solution. HELICS.sln can be replaced
+with the name of one of the projects to build only that part of
+HELICS.</li>
+</ol>
+</div>
+<div class="section" id="windows-installers">
+<h2>Windows Installers<a class="headerlink" href="#windows-installers" title="Permalink to this headline">¶</a></h2>
+<p>Windows installers are available with the different
+<a class="reference external" href="https://github.com/GMLC-TDC/HELICS-src/releases">releases</a>. The
+release includes installers for the Debug version and Release version.
+As well as a zip file of the install directory. The static libraries
+included with the installer will work with Visual Studio 2017.</p>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>A quick test is to double check the versions of the HELICS player and
+recorder (located in the
+‘build:raw-latex:<cite>src</cite><a href="#id1"><span class="problematic" id="id2">:raw-latex:`\helics`</span></a><a href="#id3"><span class="problematic" id="id4">:raw-latex:`\apps`</span></a><a href="#id5"><span class="problematic" id="id6">:raw-latex:`\player`</span></a><a href="#id7"><span class="problematic" id="id8">:raw-latex:`\Debug`</span></a>’
+folder):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt; <span class="nb">cd</span> C:<span class="se">\P</span>ath<span class="se">\T</span>o<span class="se">\b</span>uild<span class="se">\s</span>rc<span class="se">\h</span>elics<span class="se">\a</span>pps<span class="se">\D</span>ebug
+
+&gt; helics_player.exe --version
+<span class="m">1</span>.0.2 <span class="m">04</span>-28-2018
+
+&gt; helics_recorder.exe --version
+<span class="m">1</span>.0.2 <span class="m">04</span>-28-2018
+</pre></div>
+</div>
+</div>
+<div class="section" id="building-helics-with-python-support">
+<h2>Building HELICS with python support<a class="headerlink" href="#building-helics-with-python-support" title="Permalink to this headline">¶</a></h2>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">-DBUILD_PYTHON_INTERFACE=ON</span></code> will generate a project to build
+the python interface, if python is installed to a system path then the
+appropriate libraries and flags will be automatically found. If SWIG is
+available and you wish to regenerate the interface set SWIG_EXECUTABLE
+to the location of swig.exe. Otherwise DISABLE_SWIG can be set to ON to
+build using repo sources for the interface. We highly recommend using
+Anaconda3/Miniconda3 for the Python distribution. Additionally, you will
+need to ensure that the Python distribution used is built using the same
+compiler architecture (x86/x64) as the one you are using to build
+HELICS, as well as the one that was used to build Boost (as mentioned
+above). ZeroMQ will be built using the CMake build process.</p>
+<div class="figure">
+<img alt="" src="../_images/windows-command-line-install.png" />
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;C:\local\helics-v1.0.0&quot;</span>  -DBUILD_PYTHON_INTERFACE<span class="o">=</span>ON -G <span class="s2">&quot;Visual Studio 14 2015 Win64&quot;</span> ..
+cmake --build . --config Release --target install
+</pre></div>
+</div>
+<p>otherwise they can be set through CMAKE flags</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="s2">&quot;C:\local\helics-v1.0.0&quot;</span>  -DBUILD_PYTHON_INTERFACE<span class="o">=</span>ON -G <span class="s2">&quot;Visual Studio 14 2015 Win64&quot;</span> -DPYTHON_INCLUDE_DIR<span class="o">=</span><span class="k">$(</span>python3-config --prefix<span class="k">)</span><span class="se">\i</span>nclude<span class="se">\p</span>ython3.6m<span class="se">\ </span>-DPYTHON_LIBRARY<span class="o">=</span><span class="k">$(</span>python3-config --prefix<span class="k">)</span><span class="se">\l</span>ib<span class="se">\p</span>ython3.6m<span class="se">\l</span>ibpython3.6m.dll ..
+cmake --build . --config Release --target install
+</pre></div>
+</div>
+<div class="figure">
+<img alt="" src="../_images/windows-command-line-success.png" />
+</div>
+<p>Add the following to the Windows PYTHONPATH environment variable or run
+the following in the command line.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>C:<span class="se">\l</span>ocal<span class="se">\h</span>elics-v1.0.2<span class="se">\p</span>ython<span class="p">;</span>%PYTHONPATH%
+</pre></div>
+</div>
+<p>If you open a interactive Python session and import helics, you should
+be able to get the version of <code class="docutils literal notranslate"><span class="pre">helics</span></code> and an output that is similar
+to the following.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ipython
+Python <span class="m">3</span>.6.4 <span class="p">|</span>Anaconda, Inc.<span class="p">|</span> <span class="o">(</span>default, Jan <span class="m">16</span> <span class="m">2018</span>, <span class="m">12</span>:04:33<span class="o">)</span>
+Type <span class="s1">&#39;copyright&#39;</span>, <span class="s1">&#39;credits&#39;</span> or <span class="s1">&#39;license&#39;</span> <span class="k">for</span> more information
+IPython <span class="m">6</span>.2.1 -- An enhanced Interactive Python. Type <span class="s1">&#39;?&#39;</span> <span class="k">for</span> help.
+
+In <span class="o">[</span><span class="m">1</span><span class="o">]</span>: import helics
+
+In <span class="o">[</span><span class="m">2</span><span class="o">]</span>: helics.helicsGetVersion<span class="o">()</span>
+Out<span class="o">[</span><span class="m">2</span><span class="o">]</span>: <span class="s1">&#39;1.0.2 (04-28-18)&#39;</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="" src="../_images/windows-python-success.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mac.html" class="btn btn-neutral float-right" title="Mac Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright Copyright © 2017-2018,
+Battelle Memorial Institute; Lawrence Livermore National Security, LLC; Alliance for Sustainable Energy, LLC
+All rights reserved. See LICENSE file and DISCLAIMER for more details..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
